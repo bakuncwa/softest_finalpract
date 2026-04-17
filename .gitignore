@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+jmeter.log
+jmeter_results/
+jmeter_report/
+jmeter_results.jtl

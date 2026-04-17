@@ -1,0 +1,49 @@
+=======================================================
+  SOFTEST Final Exam – Group 4 | Test Summary
+=======================================================
+  Run         : 2026-04-18 00:58:40
+  Total TCs   : 34
+  Passed      : 26
+  Failed      : 8
+  Pass Rate   : 76.5%
+  Duration    : 362.7s
+-------------------------------------------------------
+  TC        Result  Description
+-------------------------------------------------------
+  TC-001    PASS    Successful User Registration
+  TC-002    PASS    Login with Valid Credentials
+  TC-003    PASS    Duplicate Email Registration
+  TC-004    FAIL    Login with Incorrect Password
+  TC-005    PASS    Repetitive Registration – Password Mismatch Bypass
+  TC-006    PASS    Secure Logout
+  TC-007    PASS    Valid Keyword Search
+  TC-008    PASS    Product Detail Modal View
+  TC-009    PASS    Invalid Search Query – No Results
+  TC-010    PASS    Item Category Filtering
+  TC-011    PASS    Administrative Section Access
+  TC-012    FAIL    Add Single Item to Basket
+  TC-013    PASS    Increase Item Quantity in Basket
+  TC-014    PASS    Remove Item from Basket
+  TC-015    FAIL    Basket Data Persistence
+  TC-016    PASS    View Other User's Basket (IDOR)
+  TC-017    PASS    Zero-Star Feedback Submission
+  TC-018    FAIL    Verify Total Calculation at Checkout
+  TC-019    FAIL    Add New Address Validation
+  TC-020    FAIL    Delivery Speed Price Added to Total
+  TC-021    FAIL    Coupon Code Validation
+  TC-022    PASS    Order History Accuracy
+  TC-023    PASS    Upload Profile Picture
+  TC-024    PASS    Update Username / Profile Settings
+  TC-025    FAIL    Write a Review via Order History
+  TC-026    PASS    DOM XSS via Search Bar
+  TC-027    PASS    SQL Injection – Admin Login Bypass
+  TC-028    PASS    SQL Injection – Login as Specific User
+  TC-029    PASS    SQL Injection via URL – Credential Dump
+  TC-030    PASS    Reflected XSS via Search Bar
+  TC-031    PASS    Prompt Injection – Chatbot Coupon
+  TC-032    PASS    Vulnerable Components – Kill Chatbot
+  TC-033    PASS    Sensitive Data Exposure – /metrics Endpoint
+  TC-034    PASS    Sensitive Data Exposure – FTP Directory
+=======================================================
+  VERDICT: 26 PASSED  |  8 FAILED
+=======================================================

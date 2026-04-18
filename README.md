@@ -122,18 +122,42 @@ Output files generated per run:
 | Bug/Defect ID | Severity | Linked Test Case | Summary | Status |
 |---------------|----------|-----------------|---------|--------|
 | **WORKFLOW 1 — User Registration & Login** | | | | |
+| — | — | TC-001 | Successful User Registration | Passed |
+| — | — | TC-002 | Login with Valid Credentials | Passed |
+| — | — | TC-003 | Duplicate Email Registration | Passed |
 | BUG-001 | Minor | TC-004 | Login error snack-bar obscured by language-change notification on first load — invalid-password message not captured | In Progress |
+| — | — | TC-005 | Repetitive Registration – Password Mismatch Bypass | Passed |
+| — | — | TC-006 | Secure Logout | Passed |
 | **WORKFLOW 2 — Product Browsing & Search** | | | | |
-| — | — | — | No defects recorded — all test cases passed | — |
+| — | — | TC-007 | Valid Keyword Search | Passed |
+| — | — | TC-008 | Product Detail Modal View | Passed |
+| — | — | TC-009 | Invalid Search Query – No Results | Passed |
+| — | — | TC-010 | Item Category Filtering | Passed |
+| — | — | TC-011 | Administrative Section Access | Passed |
 | **WORKFLOW 3 — Shopping Cart Management** | | | | |
 | BUG-002 | Major | TC-012 | Add to Basket snack-bar confirmation not consistently rendered within timeout — item addition unverifiable | In Progress |
+| — | — | TC-013 | Increase Item Quantity in Basket | Passed |
+| — | — | TC-014 | Remove Item from Basket | Passed |
 | BUG-003 | Major | TC-015 | Basket contents not persisted after navigating away and returning — basket found empty on reload | In Progress |
+| — | — | TC-016 | View Other User's Basket (IDOR) | Passed |
+| — | — | TC-017 | Zero-Star Feedback Submission | Passed |
 | **WORKFLOW 4 — Checkout & Payment** | | | | |
 | BUG-004 | Minor | TC-018 | Total price DOM element ambiguous — selector matches parent container and concatenates all child price values into unparseable string | In Progress |
 | BUG-005 | Major | TC-019 | Checkout button intercepted by overlay — address selection step unreachable | In Progress |
 | BUG-006 | Major | TC-020 | Delivery speed selection button intercepted — delivery pricing step unreachable | In Progress |
 | BUG-007 | Minor | TC-021 | Submitting invalid coupon code returns HTTP 500 instead of a client-facing validation error | In Progress |
 | **WORKFLOW 5 — Order History & Profile** | | | | |
+| — | — | TC-022 | Order History Accuracy | Passed |
+| — | — | TC-023 | Upload Profile Picture | Passed |
+| — | — | TC-024 | Update Username / Profile Settings | Passed |
 | BUG-008 | Minor | TC-025 | Review input field inside product detail modal not locatable — selector times out across multiple CSS and placeholder strategies | In Progress |
 | **WORKFLOW 6 — Security Vulnerabilities** | | | | |
-| — | — | — | No defects recorded — all test cases passed | — |
+| — | — | TC-026 | DOM XSS via Search Bar | Passed |
+| — | — | TC-027 | SQL Injection – Admin Login Bypass | Passed |
+| — | — | TC-028 | SQL Injection – Login as Specific User | Passed |
+| — | — | TC-029 | SQL Injection via URL – Credential Dump | Passed |
+| — | — | TC-030 | Reflected XSS via Search Bar | Passed |
+| — | — | TC-031 | Prompt Injection – Chatbot Coupon | Passed |
+| — | — | TC-032 | Vulnerable Components – Kill Chatbot | Passed |
+| — | — | TC-033 | Sensitive Data Exposure – /metrics Endpoint | Passed |
+| — | — | TC-034 | Sensitive Data Exposure – FTP Directory | Passed |

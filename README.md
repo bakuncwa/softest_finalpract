@@ -114,3 +114,55 @@ Output files generated per run:
 | FAIL | GET /api/Users — Unauthenticated enumeration | 0/1 | — |
 
 > **Note on JMeter "failures":** All 3 failing samplers reflect *expected* security behaviour — the UNION SQLi crashes the search endpoint (HTTP 500 confirming the vulnerability), `/ftp/` closes the connection on non-browser clients, and `/api/Users` correctly returns 401 for unauthenticated access. These are intentional outcomes, not application regressions.
+
+---
+
+## Bug / Defect Report
+
+### Workflow 1 — User Registration & Login
+
+| Bug/Defect ID | Severity | Linked Test Case | Summary | Status |
+|---------------|----------|-----------------|---------|--------|
+| BUG-001 | Minor | TC-004 | Login error snack-bar obscured by language-change notification on first load | In Progress |
+| BUG-002 | Major | TC-005 | Client-side password mismatch validation bypassable — Register button remains enabled after mismatched passwords | Known (Training) |
+
+### Workflow 2 — Product Browsing & Search
+
+| Bug/Defect ID | Severity | Linked Test Case | Summary | Status |
+|---------------|----------|-----------------|---------|--------|
+| BUG-003 | Critical | TC-011 | Admin panel accessible via direct URL after SQL injection login bypass — no role check enforced | Known (Training) |
+| BUG-004 | Critical | TC-029 | SQL injection via `/rest/products/search` URL parameter dumps all user credentials | Known (Training) |
+
+### Workflow 3 — Shopping Cart Management
+
+| Bug/Defect ID | Severity | Linked Test Case | Summary | Status |
+|---------------|----------|-----------------|---------|--------|
+| BUG-005 | Minor | TC-012 | Add to Basket snack-bar confirmation not consistently rendered within timeout — item add unverifiable | In Progress |
+| BUG-006 | Major | TC-016 | IDOR: session storage `bid` value can be changed to load any other user's basket with no authorisation check | Known (Training) |
+
+### Workflow 4 — Checkout & Payment
+
+| Bug/Defect ID | Severity | Linked Test Case | Summary | Status |
+|---------------|----------|-----------------|---------|--------|
+| BUG-007 | Minor | TC-018 | Total price DOM element ambiguous — XPath selector matches parent container, concatenating all child price values | In Progress |
+| BUG-008 | Minor | TC-021 | Submitting an invalid coupon code returns HTTP 500 (server error) instead of a validated error response | In Progress |
+
+### Workflow 5 — Order History & Profile
+
+| Bug/Defect ID | Severity | Linked Test Case | Summary | Status |
+|---------------|----------|-----------------|---------|--------|
+| BUG-009 | Minor | TC-025 | Review input field inside product detail modal inconsistently located — selector times out on some runs | In Progress |
+| BUG-010 | Major | TC-017 | Zero-star feedback submittable by removing the `disabled` attribute via JavaScript — server accepts 0-star rating | Known (Training) |
+
+### Workflow 6 — Security Vulnerabilities
+
+| Bug/Defect ID | Severity | Linked Test Case | Summary | Status |
+|---------------|----------|-----------------|---------|--------|
+| BUG-011 | Critical | TC-026 | DOM XSS via search bar — `<iframe src="javascript:alert('xss')">` executes in browser context | Open |
+| BUG-012 | Critical | TC-027 | SQL injection `admin@juice-sh.op'--` bypasses authentication and grants admin access | Open |
+| BUG-013 | Critical | TC-028 | SQL injection allows login as any registered user without a password | Open |
+| BUG-014 | Critical | TC-030 | Reflected XSS via search query parameter — script injected through URL is executed client-side | Open |
+| BUG-015 | Major | TC-031 | Prompt injection on support chatbot leaks active discount coupon code | Open |
+| BUG-016 | Major | TC-032 | VM context injection via username field nullifies chatbot `processQuery` function for all users | Open |
+| BUG-017 | Major | TC-033 | Prometheus `/metrics` endpoint publicly accessible without authentication — exposes server internals | Open |
+| BUG-018 | Major | TC-034 | `/ftp/` directory listing publicly accessible — exposes sensitive files and easter eggs | Open |

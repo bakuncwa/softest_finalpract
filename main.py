@@ -21,7 +21,9 @@ Prerequisites
 """
 
 import datetime
+import subprocess
 import sys
+import time
 from typing import Optional
 
 from test_scripts import (
@@ -355,6 +357,45 @@ def _write_simple_summary(
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# Screen recording helpers (ffmpeg / macOS avfoundation — screen device 4)
+# ──────────────────────────────────────────────────────────────────────────────
+def _start_recording(output_path: str) -> subprocess.Popen:
+    """Start screen recording via ffmpeg and return the process handle."""
+    cmd = [
+        "ffmpeg", "-y",
+        "-f", "avfoundation",
+        "-capture_cursor", "1",
+        "-i", "4:none",          # 'Capture screen 0', no audio
+        "-r", "15",              # 15 fps — keeps file size manageable
+        "-vcodec", "libx264",
+        "-preset", "ultrafast",
+        "-crf", "28",
+        output_path,
+    ]
+    proc = subprocess.Popen(
+        cmd,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    time.sleep(1.5)  # give ffmpeg a moment to initialise before tests start
+    logger.info(f"[RECORD] Started → {output_path}")
+    return proc
+
+
+def _stop_recording(proc: subprocess.Popen, label: str) -> None:
+    """Stop ffmpeg recording gracefully by sending 'q', then wait for it to finish."""
+    try:
+        proc.stdin.write(b"q")
+        proc.stdin.flush()
+        proc.wait(timeout=15)
+        logger.info(f"[RECORD] Saved recording for {label}")
+    except Exception as exc:
+        proc.kill()
+        logger.warning(f"[RECORD] Force-killed recording for {label}: {exc}")
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Main entry point
 # ──────────────────────────────────────────────────────────────────────────────
 def main() -> None:
@@ -372,6 +413,13 @@ def main() -> None:
 
     selenium_results: list = []
     suite_start = datetime.datetime.now()
+    _rec_proc: Optional[subprocess.Popen] = None
+
+    # Module boundaries for screen recording
+    _REC_START = {"TC-012": "module_2_3_shopping_cart.mp4",
+                  "TC-018": "module_2_4_checkout.mp4"}
+    _REC_STOP  = {"TC-017": "Module 2.3 – Shopping Cart",
+                  "TC-021": "Module 2.4 – Checkout & Payment"}
 
     for entry in TEST_SUITE:
         test_fn      = entry["fn"]
@@ -379,6 +427,10 @@ def main() -> None:
         workflow     = entry["workflow"]
         needs_driver = entry["needs_driver"]
         driver       = None
+
+        # Start recording at module boundaries
+        if tc_id in _REC_START:
+            _rec_proc = _start_recording(_REC_START[tc_id])
 
         try:
             if needs_driver:
@@ -403,6 +455,11 @@ def main() -> None:
             if driver:
                 driver.quit()
                 logger.info(f"  Browser closed after {tc_id}.")
+
+        # Stop recording after final TC in each module
+        if tc_id in _REC_STOP and _rec_proc:
+            _stop_recording(_rec_proc, _REC_STOP[tc_id])
+            _rec_proc = None
 
     total_selenium = (datetime.datetime.now() - suite_start).total_seconds()
 

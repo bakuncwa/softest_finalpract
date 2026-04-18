@@ -117,40 +117,23 @@ Output files generated per run:
 
 ---
 
-## Bug / Defect Report
-
-### Workflow 1 — User Registration & Login
+## Bug / Defect Report — OWASP Juice Shop — After Testing
 
 | Bug/Defect ID | Severity | Linked Test Case | Summary | Status |
 |---------------|----------|-----------------|---------|--------|
+| **WORKFLOW 1 — User Registration & Login** | | | | |
 | BUG-001 | Minor | TC-004 | Login error snack-bar obscured by language-change notification on first load — invalid-password message not captured | In Progress |
-
-### Workflow 2 — Product Browsing & Search
-
-No defects recorded — all test cases passed.
-
-### Workflow 3 — Shopping Cart Management
-
-| Bug/Defect ID | Severity | Linked Test Case | Summary | Status |
-|---------------|----------|-----------------|---------|--------|
+| **WORKFLOW 2 — Product Browsing & Search** | | | | |
+| — | — | — | No defects recorded — all test cases passed | — |
+| **WORKFLOW 3 — Shopping Cart Management** | | | | |
 | BUG-002 | Major | TC-012 | Add to Basket snack-bar confirmation not consistently rendered within timeout — item addition unverifiable | In Progress |
 | BUG-003 | Major | TC-015 | Basket contents not persisted after navigating away and returning — basket found empty on reload | In Progress |
-
-### Workflow 4 — Checkout & Payment
-
-| Bug/Defect ID | Severity | Linked Test Case | Summary | Status |
-|---------------|----------|-----------------|---------|--------|
+| **WORKFLOW 4 — Checkout & Payment** | | | | |
 | BUG-004 | Minor | TC-018 | Total price DOM element ambiguous — selector matches parent container and concatenates all child price values into unparseable string | In Progress |
 | BUG-005 | Major | TC-019 | Checkout button intercepted by overlay — address selection step unreachable | In Progress |
 | BUG-006 | Major | TC-020 | Delivery speed selection button intercepted — delivery pricing step unreachable | In Progress |
 | BUG-007 | Minor | TC-021 | Submitting invalid coupon code returns HTTP 500 instead of a client-facing validation error | In Progress |
-
-### Workflow 5 — Order History & Profile
-
-| Bug/Defect ID | Severity | Linked Test Case | Summary | Status |
-|---------------|----------|-----------------|---------|--------|
+| **WORKFLOW 5 — Order History & Profile** | | | | |
 | BUG-008 | Minor | TC-025 | Review input field inside product detail modal not locatable — selector times out across multiple CSS and placeholder strategies | In Progress |
-
-### Workflow 6 — Security Vulnerabilities
-
-No defects recorded — all test cases passed.
+| **WORKFLOW 6 — Security Vulnerabilities** | | | | |
+| — | — | — | No defects recorded — all test cases passed | — |

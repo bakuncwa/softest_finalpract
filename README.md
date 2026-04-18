@@ -135,17 +135,17 @@ Output files generated per run:
 | — | — | TC-010 | Item Category Filtering | Passed |
 | — | — | TC-011 | Administrative Section Access | Passed |
 | **WORKFLOW 3 — Shopping Cart Management** | | | | |
-| BUG-002 | Major | TC-012 | Add to Basket snack-bar confirmation not consistently rendered within timeout — item addition unverifiable | In Progress |
+| BUG-002 | Critical | TC-012 | Add to Basket snack-bar confirmation not consistently rendered within timeout — core shopping functionality unverifiable | In Progress |
 | — | — | TC-013 | Increase Item Quantity in Basket | Passed |
 | — | — | TC-014 | Remove Item from Basket | Passed |
-| BUG-003 | Major | TC-015 | Basket contents not persisted after navigating away and returning — basket found empty on reload | In Progress |
+| BUG-003 | Critical | TC-015 | Basket contents not persisted after navigating away and returning — entire purchase flow broken | In Progress |
 | — | — | TC-016 | View Other User's Basket (IDOR) | Passed |
 | — | — | TC-017 | Zero-Star Feedback Submission | Passed |
 | **WORKFLOW 4 — Checkout & Payment** | | | | |
 | BUG-004 | Minor | TC-018 | Total price DOM element ambiguous — selector matches parent container and concatenates all child price values into unparseable string | In Progress |
-| BUG-005 | Major | TC-019 | Checkout button intercepted by overlay — address selection step unreachable | In Progress |
-| BUG-006 | Major | TC-020 | Delivery speed selection button intercepted — delivery pricing step unreachable | In Progress |
-| BUG-007 | Minor | TC-021 | Submitting invalid coupon code returns HTTP 500 instead of a client-facing validation error | In Progress |
+| BUG-005 | Blocker | TC-019 | Checkout button intercepted by overlay — address selection step completely unreachable, purchase cannot be completed | In Progress |
+| BUG-006 | Critical | TC-020 | Delivery speed selection button intercepted — delivery pricing step unreachable mid-checkout flow | In Progress |
+| BUG-007 | Major | TC-021 | Submitting invalid coupon code triggers unhandled HTTP 500 server error instead of a client-facing validation response | In Progress |
 | **WORKFLOW 5 — Order History & Profile** | | | | |
 | — | — | TC-022 | Order History Accuracy | Passed |
 | — | — | TC-023 | Upload Profile Picture | Passed |
